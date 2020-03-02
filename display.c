@@ -300,7 +300,7 @@ void display_update(void)
                 continue;
 
             for(k = 0; k < 8; k++)
-                spi_send_recv(font[c*8 + k]);
+                spi_send_recv(font[c* 8 + k]);
         }
     }
 }
