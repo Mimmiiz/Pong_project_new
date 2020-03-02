@@ -32,7 +32,7 @@ static void num32asc( char * s, int );
 #define BALL_WIDTH (2)
 
 uint8_t screen[128 * 4] = {0};
-uint8_t screen_2[128 * 8] = {0};
+uint8_t screen_2[128 * 36] = {0};
 
 /* function that creates a small delay */
 void quicksleep(int cyc)
