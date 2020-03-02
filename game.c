@@ -1,6 +1,6 @@
 /*
 game.c
-Written by Maria Halvarsson & Jinglan Qin
+Written by Jinglan Qin and Maria Halvarsson
 */
 
 #include <stdint.h>
@@ -44,6 +44,7 @@ void game_init (void)
     winner = 0;
 }
 
+/* written by Jinglan Qin */
 void move_ball(void)
 {
     ball.x = (ball.x + ball.dx);
@@ -110,6 +111,7 @@ void move_ball(void)
     }
 }
 
+/* written by Jinglan Qin */
 void move_paddle_ai ()
 {
     if (ball.x > 100 && ball.dy < 0 && ball.dx > 0) // om bollen går uppåt
@@ -140,6 +142,7 @@ void move_paddle_ai ()
     }
 }
 
+/* written by Jinglan Qin */
 void move_paddle1_up() /* om BTN4 är nedtryckt*/
 {
     if (p1.y <= 0) //om paddel ligger på skärmens toppen
@@ -151,6 +154,8 @@ void move_paddle1_up() /* om BTN4 är nedtryckt*/
         p1.y -= 1; // annars, paddle flyttar på sig 1 pixel uppåt
     }
 }
+
+/* written by Jinglan Qin */
 void move_paddle2_up() /* om BTN2 är nedtryckt */
 {
     if (p2.y <= 0) //om paddel ligger på skärmens toppen
@@ -163,6 +168,7 @@ void move_paddle2_up() /* om BTN2 är nedtryckt */
     }
 }
 
+/* written by Jinglan Qin */
 void move_paddle1_down() /* if BTN3 is pushed */
 {
     if (p1.y >= SCREEN_HEIGHT - PADDLE_HEIGHT)
@@ -175,6 +181,7 @@ void move_paddle1_down() /* if BTN3 is pushed */
     }
 }
 
+/* written by Jinglan Qin */
 void move_paddle2_down() /* if BTN1 is pushed */
 {
     if (p2.y >= SCREEN_HEIGHT - PADDLE_HEIGHT)
@@ -187,6 +194,7 @@ void move_paddle2_down() /* if BTN1 is pushed */
     }
 }
 
+/* written by Maria Halvarsson */
 void ball_reset (void)
 {
     ball.x = 64;
@@ -194,6 +202,7 @@ void ball_reset (void)
     ball.dy = 1;
 }
 
+/* written by Jinglan Qin */
 /* updates the paddles */
 void update_paddles ()
 {
@@ -217,6 +226,7 @@ void update_paddles ()
     }
 }
 
+/* written by Jinglan Qin */
 void update_paddle1 ()
 {
   if(getbtns() & 0x4)//if BTN3 is pushed, move paddle 1 down
@@ -230,6 +240,7 @@ void update_paddle1 ()
 
 }
 
+/* written by Maria Halvarsson */
 void draw_display ()
 {
     draw_paddle(p1);
@@ -238,6 +249,7 @@ void draw_display ()
     draw_scoreboard(p1, p2);
 }
 
+/* written by Maria Halvarsson */
 void update_cursor()
 {
   if (cursor_point == 1)
@@ -261,6 +273,7 @@ void update_cursor()
   }
 }
 
+/* from lab written by Maria and Jinglan */
 int getbtns (void)
 {
   int i = 0x0;
