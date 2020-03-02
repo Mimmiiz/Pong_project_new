@@ -106,7 +106,6 @@ void draw_pixel (int x, int y)
 
 /* this function draws the ball on the screen 
 Written by Maria Halvarsson */
-*/
 void draw_ball (Ball b)
 { int i, j;
 	for ( i = 0; i < BALL_WIDTH; i++)
