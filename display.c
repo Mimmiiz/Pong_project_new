@@ -51,41 +51,45 @@ void display_debug( volatile int * const addr )
 /* written by F Lundevall & Axel Isaksson */
 uint8_t spi_send_recv(uint8_t data)
 {
-    while(!(SPI2STAT & 0x08));
-    SPI2BUF = data;
-    while(!(SPI2STAT & 1));
-    return SPI2BUF;
+	while(!(SPI2STAT & 0x08));   // if SPIxTXB (transmit buffer) is not empty, SPI2BUF = data
+	SPI2BUF = data;              // send data to slave
+	while(!(SPI2STAT & 1));      // if SPIxRXB (receive buffer) is not full, return SPI2BUF.
+	return SPI2BUF;              // return received data.  *When first bit(SPIRBF) in SPI2STAT is 0, 
+	                             // receive buffer is not full, return data in recieved buffer.
 }
 
 void display_init(void)
 {
-    DISPLAY_CHANGE_TO_COMMAND_MODE;
-    quicksleep(10);
-    DISPLAY_ACTIVATE_VDD;
-    quicksleep(1000000);
+    
+	DISPLAY_CHANGE_TO_COMMAND_MODE;
+	quicksleep(10);
+	DISPLAY_ACTIVATE_VDD;
+  	quicksleep(1000000);
 
-    spi_send_recv(0xAE);
-    DISPLAY_ACTIVATE_RESET;
-    quicksleep(10);
-    DISPLAY_DO_NOT_RESET;
-    quicksleep(10);
+	spi_send_recv(0xAE); 	// display off 
+  	DISPLAY_ACTIVATE_RESET;	//bring reset low
+	quicksleep(10);
+	DISPLAY_DO_NOT_RESET;	//bring reset high
+	quicksleep(10);
+         
+	//Send the Set Charge Pump and Set Pre-Charge Period commands
+	spi_send_recv(0x8D); 	// charge pump setting
+	spi_send_recv(0x14);	// enable charge pump
 
-    spi_send_recv(0x8D);
-    spi_send_recv(0x14);
+	spi_send_recv(0xD9); 	// set pre charge period
+	spi_send_recv(0xF1);
 
-    spi_send_recv(0xD9);
-    spi_send_recv(0xF1);
+	DISPLAY_ACTIVATE_VBAT;
+	quicksleep(10000000);
+        /* Send the commands to invert the display. This puts the display origin ** in the upper left corner.*/
+	spi_send_recv(0xA1); 	// set segment re-map
+	spi_send_recv(0xC8); 	// set COM output scan direction
+        
+	/* Send the commands to select sequential COM configuration. This makes the ** display memory non-interleaved.*/
+	spi_send_recv(0xDA); 	// set COM pins hardware configuration
+	spi_send_recv(0x20); 	// set memory adressing mode
 
-    DISPLAY_ACTIVATE_VBAT;
-    quicksleep(10000000);
-
-    spi_send_recv(0xA1);
-    spi_send_recv(0xC8);
-
-    spi_send_recv(0xDA);
-    spi_send_recv(0x20);
-
-    spi_send_recv(0xAF);
+	spi_send_recv(0xAF); 	// display on
 }
 
 /* this function draws one pixel on the screen */
@@ -266,11 +270,11 @@ void display_update(void)
     for(i = 0; i < 4; i++)
     {
         DISPLAY_CHANGE_TO_COMMAND_MODE;
-        spi_send_recv(0x22);
+        spi_send_recv(0x22);// set page adress
         spi_send_recv(i);
 
-        spi_send_recv(0x0);
-        spi_send_recv(0x10);
+        spi_send_recv(0x0);// set lower column start address for page addressing mode
+        spi_send_recv(0x10); // set higher column start adress for page addressing mode
 
         DISPLAY_CHANGE_TO_DATA_MODE;
 
