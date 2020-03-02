@@ -1,5 +1,7 @@
 /*
 display.c
+Written by Maria Halvarsson & Jinglan Qin
+Note: Parts of the program are written by F Lundevall and Axel Isaksson
  */
 
 #include <stdint.h>
