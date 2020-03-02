@@ -60,6 +60,7 @@ uint8_t spi_send_recv(uint8_t data)
 	                             // receive buffer is not full, return data in recieved buffer.
 }
 
+/* written by F Lundevall & Axel Isaksson */
 void display_init(void)
 {
     
@@ -115,6 +116,7 @@ void draw_ball (Ball b)
 	}
 }
 
+/* written by Jinglan Qin */
 void draw_paddle(Paddle pad)
  {
      int i,j;
