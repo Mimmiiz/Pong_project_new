@@ -95,7 +95,8 @@ void display_init(void)
 	spi_send_recv(0xAF); 	// display on
 }
 
-/* this function draws one pixel on the screen */
+/* this function draws one pixel on the screen, 
+this function was based on Simone Stefani and Marcel Eschmann function from chipkit-pong project on github */
 void draw_pixel (int x, int y)
 {
     int page = 0;
