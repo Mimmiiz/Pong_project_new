@@ -38,6 +38,7 @@ void quicksleep(int cyc)
     for(i = cyc; i > 0; i--);
 }
 
+/* written by F Lundevall & Axel Isaksson */
 void display_debug( volatile int * const addr )
 {
   display_string( 1, "Addr" );
@@ -47,6 +48,7 @@ void display_debug( volatile int * const addr )
   display_update();
 }
 
+/* written by F Lundevall & Axel Isaksson */
 uint8_t spi_send_recv(uint8_t data)
 {
     while(!(SPI2STAT & 0x08));
