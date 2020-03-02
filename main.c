@@ -1,7 +1,7 @@
 /*
  main.c
- written by Jinglan Qin and Maria Halvarsson
- Note: parts of this program is written by F Lundevall & Axel Isaksson
+ written by F Lundevall & Axel Isaksson Jinglan Qin and Maria Halvarsson
+ Note: parts of this program is written by Jinglan Qin and Maria Halvarsson
 */
 #include <stdint.h>
 #include <pic32mx.h>
