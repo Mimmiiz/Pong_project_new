@@ -1,5 +1,7 @@
 /*
- main. c
+display_data.c
+Witten by Maria Halvarsson
+Note: Parts of this program is written by F Lundevall & Axel Isaksson
 */
 
 #include <stdint.h>
@@ -8,6 +10,7 @@
 
 char textbuffer[4][16];
 
+/* written by F Lundevall & Axel Isaksson */
 const uint8_t const font[] = {
 	0, 0, 0, 0, 0, 0, 0, 0,
 	0, 0, 0, 0, 0, 0, 0, 0,
@@ -139,6 +142,7 @@ const uint8_t const font[] = {
 	0, 120, 68, 66, 68, 120, 0, 0,
 };
 
+/* written by Maria Halvarsson */
 const uint8_t const pong_icon[] = {
     0, 0, 0, 0, 0, 0, 0, 0,
     0, 0, 0, 0, 0, 0, 0, 0,
@@ -206,6 +210,7 @@ const uint8_t const pong_icon[] = {
     0, 0, 0, 0, 0, 0, 0, 0,
 };
 
+/* written by Maria Halvarsson */
 const uint8_t const cursor[8] = {
 	0, 0, 0, 62, 28, 8, 0, 0
 };
