@@ -294,6 +294,7 @@ void clear_screen ()
     }
 }
 
+/* clears textbuffer */
 void clear_string ()
 {
   int i, j;
