@@ -1,3 +1,8 @@
+/*
+handle_interrupt.c
+written by Jinglan Qin and Maria Halvarsson
+*/
+
 #include <stdint.h>
 #include <pic32mx.h>
 #include "headerfile.h"
