@@ -104,7 +104,9 @@ void draw_pixel (int x, int y)
     screen[page * SCREEN_LENGTH + x] |= 1 << (y - page * 8);
 }
 
-/* this function draws the ball on the screen */
+/* this function draws the ball on the screen 
+Written by Maria Halvarsson */
+*/
 void draw_ball (Ball b)
 { int i, j;
 	for ( i = 0; i < BALL_WIDTH; i++)
@@ -127,6 +129,7 @@ void draw_paddle(Paddle pad)
      }
  }
 
+/* written by Maria Halvarsson */
 void draw_scoreboard (Paddle pad1, Paddle pad2)
 {
     int x = 58;
@@ -175,6 +178,7 @@ void draw_scoreboard (Paddle pad1, Paddle pad2)
     }
 }
 
+/* written by Maria Halvarsson */ 
 void draw_string (int x)
 {
   int i, j, k;
@@ -197,6 +201,7 @@ void draw_string (int x)
   }
 }
 
+/* written by Maria Halvarsson */ 
 void draw_cursor(int n)
 {
   int x = 10;
@@ -206,6 +211,7 @@ void draw_cursor(int n)
     screen[x +  n * 128 + i] = cursor[i];
 }
 
+/* written by F Lundevall & Axel Isaksson */
 void display_string(int line, char *s)
 {
     int i;
@@ -222,6 +228,7 @@ void display_string(int line, char *s)
             textbuffer[line][i] = ' ';
 }
 
+/* written by Maria Halvarsson */
 void display_main_menu ()
 {
   clear_string();
@@ -230,6 +237,7 @@ void display_main_menu ()
   draw_string (20);
 }
 
+/* written by Maria Halvarsson */
 void display_winner (int n)
 {
   clear_string();
@@ -246,6 +254,7 @@ void display_winner (int n)
   draw_string (20);
 }
 
+/* written by F Lundevall & Axel Isaksson, partly modified */
 void display_image(int x, const uint8_t *data)
 {
 	int i, j;
@@ -267,6 +276,7 @@ void display_image(int x, const uint8_t *data)
 	}
 }
 
+/* written by F Lundevall & Axel Isaksson*/
 void display_update(void)
 {
     int i, j, k;
@@ -294,7 +304,7 @@ void display_update(void)
     }
 }
 
-/* function clears the screen */
+/* function clears the screen, written by Maria Halvarsson */
 void clear_screen ()
 {
     int i;
@@ -304,7 +314,7 @@ void clear_screen ()
     }
 }
 
-/* clears textbuffer */
+/* clears textbuffer, written by Maria Halvarsson */
 void clear_string ()
 {
   int i, j;
